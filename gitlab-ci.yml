@@ -1,0 +1,24 @@
+stages:
+  - install
+  - deploy
+
+install-step:
+  stage: install
+  tags:
+    - web-component
+  script:
+ #   - cp -f .env.example .env
+    - sudo docker container run --name install-stage --rm --workdir /app -v $(pwd):/app:rw node:14 npm install
+    - sudo docker container run --name build-stage --rm --workdir /app -v $(pwd):/app:rw node:14 npm run build
+    - sudo chown gitlab-runner. -R ./
+  artifacts:
+    paths:
+      - build
+    expire_in: 1 hour
+deploy-step:
+  stage: deploy
+  tags:
+    - web-component
+  script:
+    - sudo cp -rf build/* /var/lib/docker/volumes/build/_data/
+    - sudo docker container restart deploy-stage
