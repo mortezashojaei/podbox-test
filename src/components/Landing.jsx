@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-// import PodBox from "pod-box-sdk";
+import PodBox from "pod-box-sdk";
 
 export const Landing = () => {
   const [data, setData] = useState();
   const [user, setUser] = useState();
 
-  useEffect(() => {
-    // PodBox.init();
-  }, []);
-
   const fetchUserInfo = async () => {
-    // const userInfo = await PodBox.getUserInfo();
-    // setUser(userInfo);
+    const userInfo = await PodBox.user.getInfo();
+    setUser(userInfo);
   };
 
   return (
@@ -20,7 +16,7 @@ export const Landing = () => {
       <h1> Pod box Landing page</h1>
       <button
         onClick={() => {
-          // setData(PodBox.getStoredData());
+          setData(PodBox.getStoredData());
         }}
       >
         show all stored data

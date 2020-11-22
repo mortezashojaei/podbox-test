@@ -5,9 +5,11 @@ export const Main = () => (
   <div className="App">
     <ul>
       <li>
-        <Link to="/podbox?token=vbkdnvdkj">Landing Page</Link>
+        <Link to="/init">init Page</Link>
         <hr />
-        <Link to="/login">Login Page</Link>
+        <Link to="/podbox">Landing Test Page</Link>
+        <hr />
+        <Link to="/output">Close Test Page</Link>
       </li>
     </ul>
   </div>
