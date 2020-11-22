@@ -24,3 +24,4 @@ yarn-error.log*
 
 #deploy
 .gitlab-ci.yml
+.env

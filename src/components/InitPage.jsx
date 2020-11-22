@@ -5,7 +5,8 @@ export const InitPage = () => {
   useEffect(() => {
     PodBox.init({
       clientId: "17892023x5b324db89637f1b38a2eb6de",
-      redirectUri: "http://p.houp.ir/authenticating",
+      redirectUri:
+        process.env.REACT_APP_REDIRECT_URL || "http://p.houp.ir/authenticating",
       scope: "profile",
     });
   }, []);
